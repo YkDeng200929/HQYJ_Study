@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> //内存管理用到的头文件
+#include <string.h>
 
 /*
 常用到的函数
