@@ -1,0 +1,121 @@
+1、mingw gnu安装，选择mingw32-gcc-ada后点击Installation，Apply Changes，点击Apply
+2、解压缩, bin文件夹，配置环境变量(PATH)
+3、test(gcc -v -E -x c++ -)
+4、配置vscode
+5、新建项目文件夹
+6、创建.vscode文件夹并创建c_cpp_properties.json、launch.jason、tasks.jason
+7、c_cpp_properties.jason:
+	{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceRoot}",
+                "C:/Program Files/mingw64/include/**",
+                "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++", //以下修改路径
+                "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+                "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
+                "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+                "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "__GNUC__=6",
+                "__cdecl=__attribute__((__cdecl__))"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": [
+                    "${workspaceRoot}",
+                    "C:/Program Files/mingw64/include/**",
+                    "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+                    "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+                    "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
+                    "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                    "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+                    "C:/Program Files/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"
+                ]
+            }
+        }
+    ],
+    "version": 4
+}
+8、launch.jason:
+	{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "cmd",
+            "preLaunchTask": "echo",
+            "args": [
+                "/C",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "&",
+                "echo.",
+                "&",
+                "pause"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole":true
+        },
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\Program Files\\mingw64\\bin\\gdb.exe",// 自己电脑的gdb
+            "preLaunchTask": "echo",//这里和task.json的label相对应
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+ 
+        }
+    ]
+}
+9、tasks.jason:
+	{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "echo",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g", 
+                "${file}", 
+                "-o", 
+                "${fileBasenameNoExtension}.exe",
+                "-fexec-charset=GBK"//解决中文乱码
+            ]
+        }
+    ],
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared", 
+        "showReuseMessage": true,
+        "clear": false
+    }
+}
