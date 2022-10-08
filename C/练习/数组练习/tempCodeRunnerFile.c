@@ -1,1 +1,0 @@
-    for (int i=0; num_range[i] != '\0'; i++)
