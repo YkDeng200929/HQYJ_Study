@@ -1,0 +1,3 @@
+project(cmaketest)
+
+aux_source_directory(./ SRCS)

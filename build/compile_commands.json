@@ -1,0 +1,12 @@
+[
+{
+  "directory": "D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/build",
+  "command": "D:\\minGW\\bin\\gcc.exe   -g -o CMakeFiles\\cmaketest.dir\\src\\hello.obj -c \"D:\\onedrive\\ykdeng_ttdhx\\OneDrive - ttdhx\\Laptop\\Desktop\\hqyj\\C\\练习\\cmaketest\\src\\hello.c\"",
+  "file": "D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/C/练习/cmaketest/src/hello.c"
+},
+{
+  "directory": "D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/build",
+  "command": "D:\\minGW\\bin\\gcc.exe   -g -o CMakeFiles\\cmaketest.dir\\src\\hellofunc.obj -c \"D:\\onedrive\\ykdeng_ttdhx\\OneDrive - ttdhx\\Laptop\\Desktop\\hqyj\\C\\练习\\cmaketest\\src\\hellofunc.c\"",
+  "file": "D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/C/练习/cmaketest/src/hellofunc.c"
+}
+]

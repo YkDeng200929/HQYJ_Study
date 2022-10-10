@@ -1,0 +1,56 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "cmaketest",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "cmaketest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cmaketest-Debug-4bf13f2d9debed5fa546.json",
+					"name" : "cmaketest",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/C/\u7ec3\u4e60/cmaketest/build",
+		"source" : "D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/C/\u7ec3\u4e60/cmaketest"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
