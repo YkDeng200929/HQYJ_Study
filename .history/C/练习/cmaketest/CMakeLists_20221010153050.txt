@@ -1,5 +1,0 @@
-project(cmaketest)
-
-aux_source_directory(./ SRCS)
-
-add_compile_definitions()

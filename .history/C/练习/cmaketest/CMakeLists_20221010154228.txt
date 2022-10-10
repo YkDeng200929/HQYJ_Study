@@ -1,6 +1,0 @@
-project(cmaketest)
-
-aux_source_directory(./src SRCS)
-
-
-add_executable()("${PROJECTNAME}" "${SRCS}")
