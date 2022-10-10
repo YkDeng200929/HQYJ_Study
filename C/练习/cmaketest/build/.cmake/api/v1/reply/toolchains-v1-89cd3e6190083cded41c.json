@@ -10,16 +10,17 @@
 				{
 					"includeDirectories" : 
 					[
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
-						"E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include"
+						"D:/minGW/lib/gcc/mingw32/6.3.0/include",
+						"D:/minGW/include",
+						"D:/minGW/lib/gcc/mingw32/6.3.0/include-fixed",
+						"D:/minGW/mingw32/include"
 					],
 					"linkDirectories" : 
 					[
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0",
-						"E:/Qt/Tools/mingw810_64/lib/gcc",
-						"E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/lib",
-						"E:/Qt/Tools/mingw810_64/lib"
+						"D:/minGW/lib/gcc/mingw32/6.3.0",
+						"D:/minGW/lib/gcc",
+						"D:/minGW/mingw32/lib",
+						"D:/minGW/lib"
 					],
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : 
@@ -28,20 +29,18 @@
 						"gcc",
 						"moldname",
 						"mingwex",
-						"pthread",
 						"advapi32",
 						"shell32",
 						"user32",
 						"kernel32",
-						"iconv",
 						"mingw32",
 						"gcc",
 						"moldname",
 						"mingwex"
 					]
 				},
-				"path" : "E:/Qt/Tools/mingw810_64/bin/gcc.exe",
-				"version" : "8.1.0"
+				"path" : "gcc",
+				"version" : "6.3.0"
 			},
 			"language" : "C",
 			"sourceFileExtensions" : 
@@ -58,19 +57,20 @@
 				{
 					"includeDirectories" : 
 					[
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
-						"E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include"
+						"D:/minGW/lib/gcc/mingw32/6.3.0/include/c++",
+						"D:/minGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+						"D:/minGW/lib/gcc/mingw32/6.3.0/include/c++/backward",
+						"D:/minGW/lib/gcc/mingw32/6.3.0/include",
+						"D:/minGW/include",
+						"D:/minGW/lib/gcc/mingw32/6.3.0/include-fixed",
+						"D:/minGW/mingw32/include"
 					],
 					"linkDirectories" : 
 					[
-						"E:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0",
-						"E:/Qt/Tools/mingw810_64/lib/gcc",
-						"E:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/lib",
-						"E:/Qt/Tools/mingw810_64/lib"
+						"D:/minGW/lib/gcc/mingw32/6.3.0",
+						"D:/minGW/lib/gcc",
+						"D:/minGW/mingw32/lib",
+						"D:/minGW/lib"
 					],
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : 
@@ -81,12 +81,10 @@
 						"gcc",
 						"moldname",
 						"mingwex",
-						"pthread",
 						"advapi32",
 						"shell32",
 						"user32",
 						"kernel32",
-						"iconv",
 						"mingw32",
 						"gcc_s",
 						"gcc",
@@ -94,8 +92,8 @@
 						"mingwex"
 					]
 				},
-				"path" : "E:/Qt/Tools/mingw810_64/bin/g++.exe",
-				"version" : "8.1.0"
+				"path" : "D:/minGW/bin/g++.exe",
+				"version" : "6.3.0"
 			},
 			"language" : "CXX",
 			"sourceFileExtensions" : 

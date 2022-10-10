@@ -72,29 +72,29 @@ CMakeFiles/cmaketest.dir/src/hello.obj: CMakeFiles/cmaketest.dir/flags.make
 CMakeFiles/cmaketest.dir/src/hello.obj: ../src/hello.c
 CMakeFiles/cmaketest.dir/src/hello.obj: CMakeFiles/cmaketest.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/cmaketest.dir/src/hello.obj"
-	E:\Qt\Tools\mingw810_64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/cmaketest.dir/src/hello.obj -MF CMakeFiles\cmaketest.dir\src\hello.obj.d -o CMakeFiles\cmaketest.dir\src\hello.obj -c "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hello.c"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/cmaketest.dir/src/hello.obj -MF CMakeFiles\cmaketest.dir\src\hello.obj.d -o CMakeFiles\cmaketest.dir\src\hello.obj -c "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hello.c"
 
 CMakeFiles/cmaketest.dir/src/hello.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cmaketest.dir/src/hello.i"
-	E:\Qt\Tools\mingw810_64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hello.c" > CMakeFiles\cmaketest.dir\src\hello.i
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hello.c" > CMakeFiles\cmaketest.dir\src\hello.i
 
 CMakeFiles/cmaketest.dir/src/hello.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cmaketest.dir/src/hello.s"
-	E:\Qt\Tools\mingw810_64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hello.c" -o CMakeFiles\cmaketest.dir\src\hello.s
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hello.c" -o CMakeFiles\cmaketest.dir\src\hello.s
 
 CMakeFiles/cmaketest.dir/src/hellofunc.obj: CMakeFiles/cmaketest.dir/flags.make
 CMakeFiles/cmaketest.dir/src/hellofunc.obj: ../src/hellofunc.c
 CMakeFiles/cmaketest.dir/src/hellofunc.obj: CMakeFiles/cmaketest.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/cmaketest.dir/src/hellofunc.obj"
-	E:\Qt\Tools\mingw810_64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/cmaketest.dir/src/hellofunc.obj -MF CMakeFiles\cmaketest.dir\src\hellofunc.obj.d -o CMakeFiles\cmaketest.dir\src\hellofunc.obj -c "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hellofunc.c"
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/cmaketest.dir/src/hellofunc.obj -MF CMakeFiles\cmaketest.dir\src\hellofunc.obj.d -o CMakeFiles\cmaketest.dir\src\hellofunc.obj -c "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hellofunc.c"
 
 CMakeFiles/cmaketest.dir/src/hellofunc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cmaketest.dir/src/hellofunc.i"
-	E:\Qt\Tools\mingw810_64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hellofunc.c" > CMakeFiles\cmaketest.dir\src\hellofunc.i
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hellofunc.c" > CMakeFiles\cmaketest.dir\src\hellofunc.i
 
 CMakeFiles/cmaketest.dir/src/hellofunc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cmaketest.dir/src/hellofunc.s"
-	E:\Qt\Tools\mingw810_64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hellofunc.c" -o CMakeFiles\cmaketest.dir\src\hellofunc.s
+	gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "D:\onedrive\ykdeng_ttdhx\OneDrive - ttdhx\Laptop\Desktop\hqyj\C\练习\cmaketest\src\hellofunc.c" -o CMakeFiles\cmaketest.dir\src\hellofunc.s
 
 # Object files for target cmaketest
 cmaketest_OBJECTS = \

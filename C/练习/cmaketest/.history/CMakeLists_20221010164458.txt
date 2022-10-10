@@ -1,6 +1,6 @@
 project(cmaketest)
 
-set(CMAKE_C_COMPILER "gcc")
+set(C)
 
 aux_source_directory(./src SRCS)
 
