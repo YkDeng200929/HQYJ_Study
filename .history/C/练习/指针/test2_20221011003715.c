@@ -15,8 +15,6 @@ int main(void)
 
     printf("%d %d %d\n", *a, *a+1, *a+2);
     printf("%p %p %p\n", a, a+1, a+2);
-    printf("%d %d %d\n", (*a)+1, (*a+1)+1, (*a+2)+1);
-    printarr(a);
 
     return 0;
 }
