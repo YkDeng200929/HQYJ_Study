@@ -165,7 +165,7 @@ int main()
 	return 0;
 }
 //程序运行后的输出结果是：10 9 8 7 1 2 3 4 5 6
-
+*/
 
 
 //8、有以下程序：
@@ -192,9 +192,11 @@ int main()
 	}
 	printf("t1=%d t2=%d\n",t1,t2);
 }
-//程序运行后的输出结果是：9 4
+//程序运行后的输出结果是：
 
-//9、有以下程序：
+
+/**/
+9、有以下程序：
 #include <stdio.h>
 
 #define  N  4
@@ -203,9 +205,9 @@ int fun(int a[][N])
 {
 	int i,y=0;
 	for(i=0;i<N;i++)
-		y+=a[0][i]+a[N-1][i];     // 第1行每个元素的值 + 第三行每个元素的值 += 因为a[3][0] = 0，第三行所有元素为0
+		y+=a[0][i]+a[N-1][i];     
 	for(i=1;i<N-1;i++)
-		y+=a[i][0]+a[i][N-1];    // 每行第1列的值 + 每行第4列的值
+		y+=a[i][0]+a[i][N-1];    
 	return y;
 }
 
@@ -215,19 +217,19 @@ int main()
 	y=fun(x);
 	printf("%d",y);
 }	
-//程序运行后的输出结果是：35
-*/
+程序运行后的输出结果是：
 
-//10、有以下程序：
+
+10、有以下程序：
 #include <stdio.h>
 
-void swap(int *pa,int *pb)// 交换两个指针变量所指向的值
+void swap(int *pa,int *pb)
 {
 	int t;
 	t=*pa;*pa=*pb;*pb=t;
 }
 
-void fun(int *ds,int n) // 
+void fun(int *ds,int n)
 {
 	int i,midx;
 	midx=0;
@@ -239,10 +241,11 @@ void fun(int *ds,int n) //
 int main()
 {
 	int data[]={37,31,26,17,61,12},i;
-	for(i=0;i<5;i++)// 对前四个元素调用fun
+	for(i=0;i<5;i++)
 		fun(data+i,6-i);
 	for(i=0;i<6;i++)
 		printf("%3d",data[i]);
 	printf("\n");
 }
-//程序运行后的输出结果是：从小到大排序 
+程序运行后的输出结果是：
+*/
