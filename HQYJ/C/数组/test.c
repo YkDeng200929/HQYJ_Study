@@ -1,63 +1,47 @@
 #include <stdio.h>
 
-void printarr(int *arr[][3])
+void printarr(int (*a)[3], int len_i, int len_j) //(*a)[3] == a[][3]
 {
-    for (int i =0; i < 3; i++)
+    for (int i = 0; i < len_i; i++)
     {
-        for (int b=0; b<3; b++)
-            printf("%d", arr[i][b]);
-        printf("\n");
-    }
-}
-void fun(int num, int arr[][3])
-{
-    int a = 0;
-    for (a; a<3; a++)
-    {
-        for(int b=0; b<3; b++)
+        for (int j = 0; j < len_j; j++)
         {
-            for(int c=0; c<b; c++)
-            {
-                arr[a][c] *= num;
-            }
+            printf("%d ", a[i][j]);
         }
+        putchar('\n');
     }
-    
 }
-
-int main()
-{
-    int arr[3][3] = {0,1,2,3,4,5,6,7,8,9,10};
-    printarr(arr);
-    fun(3,arr);
-    printarr(arr);
-
-    return 0;
-}
-
-
 /*
-void printarr(int arr[][2])// 二维数组作为函数参数的方式
+    将二维数组右上角三角形乘以num
+*/
+void triangle(int (*a)[3], int len_i, int len_j, int num)
 {
-    
-    for (int i=0; i<2; i++)
+    int i,j;
+    for (i=0;i<len_i;i++)
     {
-        for (int b=0; b<2; b++)
+        for (j=i;j<len_j;j++)
         {
-            printf("%d", arr[i][b]);
+            a[i][j] *= num;
         }
-        printf("\n");
     }
-
 }
 
-int main()
+
+int main(void)
 {
-    int arr[2][2] = {0,1,2,3};
-    printarr(arr);
-    //int **arr2;
+    //int j=3;
+    int arr[3][3]={
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
+    printf("前\n");
+    printarr(arr,3,3);
+    //triangle(arr,3);
+    triangle(arr,3,3,3);
+    printf("后\n");
+    printarr(arr,3,3);
     
 
     return 0;
 }
-*/
