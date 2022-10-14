@@ -70,14 +70,14 @@ int display_week(int year, int month, int day)
     int week=0;
     if (month == 1)
     {
-        week = (day + 2*13 + 3*(13+1)/5 + year + year/4 - year/100 + year/400 + 1)%7;        
+        week = ((day + 2*13) + (3*(13+1)/5) + (year + year/4) - (year/100) + (year/400) + 1)%7;        
     }
     else if (month == 2)
     {
-        week = (day + 2*14 + 3*(14+1)/5 + year + year/4 - year/100 + year/400 + 1)%7;
+        week = ((day + 2*14) + (3*(14+1)/5) + (year + year/4) - (year/100) + (year/400) + 1)%7;
     }
     else
-        week = (day + 2*month + 3*(month+1)/5 + year + year/4 - year/100 + year/400 + 1)%7;
+        week = ((day + 2*month) + (3*(month+1)/5) + (year + year/4) - (year/100) + (year/400) + 1)%7;
 
     return  week;
 }
@@ -105,11 +105,13 @@ void display_month(int year, int month, int day)
 
     // 理解：
     int i, j, k = 1;
+    // 打印第一行的空白，因为周数决定空白数
     for (i = 0; i < week_day; i++)
         printf("\t");
     for (j = 1; j <= num_day; j++)
     {
         printf("\t%d", j);
+        // 每满 7 天打印换行符
         if (i%7 == 6)
             printf("\n");
         i++;
