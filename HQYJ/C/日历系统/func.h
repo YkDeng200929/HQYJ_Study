@@ -9,7 +9,6 @@ int Isleap(int years, int month, int day)
 {
     if ((years%100 != 0) && (years%4 == 0) || (years %400 == 0))
     {
-        Isleap(years,month,day);
         return 29;
     }
     else
@@ -93,57 +92,27 @@ void display_month(int year, int month, int day)
 {
     // 以下实现打印头两行
     char *week[7] = {"SUN", "MON", "THS", "WEN", "THU", "FRI", "SAT"};
-    printf("%24d年%d月\n", year, month);
+    printf("\t\t\t%d年%d月\n", year, month);
     for (int i=0; i <7; i++)// 4 x 7 = 28
     {
-        printf("%4s", week[i]);
+        printf("\t%s", week[i]);
     }
     putchar('\n');
 
     // 以下实现打印日历内容
-    char day_display[40];
-    int blank = 0; // 因为空白就是周数
-    if (display_week(year,1,1) == 7)
-        blank = display_week(year,month,day);
-    int a = 0, b=1, c;
-    for (a = 0; a < blank; a++)
-        day_display[a] = ' ';
-    for (a; a < judge_month(year,month,day); a++)
-    {
-        day_display[a] = b++;
-    }
-    day_display[a] = '\0';
-    b = 0;
+    int num_day = judge_month(year,month,day);
+    int week_day = display_week(year, month, 1);
 
-    for (a = 0; a < 6; a++)
+    // 理解：
+    int i, j, k = 1;
+    for (i = 0; i < week_day; i++)
+        printf("\t");
+    for (j = 1; j <= num_day; j++)
     {
-        for (c = 0; c < 7; c++)
-            printf("%4c", day_display[b++]);
-    }
-
-
-
-}
-    /* 以下代码有问题
-    int j, i=1;
-    for (j=0; j < blank; j++)
-    {
-        day_display[j] = 0;
-    }
-    for (; j < (blank + judge_month(year,month,day)); j++)
-    {
-        day_display[j] = i;
+        printf("\t%d", j);
+        if (i%7 == 6)
+            printf("\n");
         i++;
     }
-    day_display[++j] = '\0';
-    // 打印日历内容
-    int a, b, c=0;
-    for (a = 0; day_display[a] != '\0'; a++)
-    {
-        for (b = 0; b < 7; b++)
-            printf("%4d", day_display[c++]);
-        putchar('\n');
-    }
-
+    printf("\n");
 }
-*/
