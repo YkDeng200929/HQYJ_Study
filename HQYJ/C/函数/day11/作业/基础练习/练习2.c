@@ -3,16 +3,12 @@
 void reverse_data(int *arr)
 {
     int i, j;
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < 5/2; i++)// 数组第一个元素与最后一个元素换位，之所以为5/2是因为每次交换两个元素位置直至中间位置
     {
-        for (j = 0; j < 5-i; j++)
-        {
-            int temp;
-
-            temp = *(arr+j+1);
-            *(arr+j+1) = *(arr+j);
-            *(arr+j) = temp;
-        }
+        int temp;
+        temp = arr[5-1-i];
+        arr[5-1-i] = arr[i];
+        arr[i] = temp;
     }
 }
 
