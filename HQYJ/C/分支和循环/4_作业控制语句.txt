@@ -1,0 +1,210 @@
+1、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int x=1,y=0,a=0,b=0;
+	switch(x)
+	{
+		case 1:
+		switch(y)
+		{
+			case 0:a++;break;
+			case 1:b++;break;
+		}
+		case 2:a++;b++;break;
+		case 3:a++;b++;
+	}
+	printf("a=%d,b=%d\n",a,b);
+	return 0;
+}
+程序运行结果是:
+
+
+2、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int a=0,b=0,c=0,d=0;
+	if(a=1)b=1;c=2;
+	else d=3;
+	printf("%d,%d,%d,%d\n",a,b,c,d);
+}
+请写出最后打印结果  
+
+
+3、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int a=1,b=1;
+	while(a--)
+		b--;
+	printf("%d%d\n",a,b);
+}
+程序的运行结果是 
+
+
+4、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int a=1, b=0; 
+	for(;a<5;a++)
+	{ if(a%2==0) break;
+		b+=a;
+	}
+	printf("%d\n",b);
+}
+程序的运行结果是  
+
+
+5、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int i；
+	for(i=1;i<= 5;i++)
+	{ if(i%2) printf("*");
+		else continue;
+	printf("#");
+    }
+	printf( "$\n");
+}
+程序运行后的输出结果是  
+
+
+6、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int i=0, sum=1;
+	do
+	{
+		sum+=i++;
+	} while(i<6); 
+	printf("%d\n" ,sum);
+}
+程序的输出结果是  
+
+
+7、有以下程序段，若变量已正确定义并赋值
+if(a>b)printf("x=%d,",x);
+else printf("y=%d,",y); 
+if(a<=b)i++;
+else j++:
+则与此程序段功能相同的选项是()  
+
+A、if(a<=b){printf("x=%d,",x);i++;}
+	else {printf("y=%d,",y);j++;}
+B、if(a>b){printf("x=%d,",x);i++;}
+   else {printf("y=%d,",y);j++;}
+C、if(a>b){printf("x=%d,",x);j++;}
+   else {printf("y=%d,",y);i++;}
+D、if(a>=b){printf("x=%d,",x);i++;}
+	else {printf("y=%d,",y);j++;}
+	
+
+8、以下程序段中，不能实现条件“如果a<b则x=10,否则x=-10“的是()  
+A、x=(a>=b)? -10:10;
+B、if(a<b) x=10;
+	else x=-10;
+C、x=-10;
+	if(a<b)x=10;
+D、if(a<b) x=10;
+	if(b<a) x=-10;
+	
+	
+9、以下能够实现计算5!的程序段是()
+A、
+int fac=1 ,k=0;
+do{ k++; fac*=k;} while(k<5);
+B、
+int fac=0,k=1;
+do{ fac*=k; k++;} while(k<5);
+C、
+int fac=1,k=1;
+do{ k++; fac*=k;} while(k<=5);
+D、
+int fac=1,k=0;
+do{ fac*=k; k++;} while(k<5);
+
+
+10、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int x=0,y=6;
+	do
+	{ while(--y) x++;}
+	while(y--);
+	printf("%d,%d\n",x,y);
+}
+程序的运行结果是  
+
+
+11、为避免在嵌套的条件语句中if-else产生二义性，C语言规定：else子句总是和（）配对  
+	A）缩排位置相同的if					B）其之前最近的if
+	C）其之后最近的if					D）同一行的if
+	
+
+12、若变量已正确定义，要求程序段完成求5!的计算，不能完成此操作的程序段是：（）  
+ 		A)for(i=1,p=1;i<=5;i++) p*=i;
+ 		B)for(i=1;i<=5;i++){ p=1; p*=i;}
+ 		C)i=1;p=1;while(i<=5){p*=i; i++;}
+		D)i=1;p=1;do{p*=i; i++; }while(i<=5); 
+
+
+13、以下程序段的输出结果是 ：（）
+		main()
+		{
+			int i,j,k;
+			for(i=0，j=10;i<=j;i++,j--)
+				k=i+j;
+			printf(“k=%d”,k);
+		}
+
+	A) k=10		B）k=22	   C）k=44	  D）k=20
+	
+	
+14、输入三个数，分别放在变量a、b、c中，然后把输入的数据重新按由小到大的顺序放在变量a、b、c中，最后输出a、b、c中的值
+
+
+15、打印出以下图形
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+**********
+
+16、打印出以下图形
+**********
+*********
+********
+*******
+******
+*****
+****
+***
+**
+*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
