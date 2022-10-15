@@ -12,7 +12,7 @@ int Isleap(int years, int month, int day)
         return 29;
     }
     else
-        return 0;
+        return 28;
 }
 
 /*
@@ -21,19 +21,9 @@ int Isleap(int years, int month, int day)
 函数参数：year, month, day
 */
 
-int judge_month(int year, int month, int day)
-{
-    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
-        {
-            return 31;
-        }
-        else if (month == 2)
-        {
-            return Isleap(year,month,day);
-        }
-        else
-            return 30;
-}
+
+// 优化：判断月份
+int month_day[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 /*
 函数功能：判断该日期距离该年的一月一日过去多少天了
@@ -45,12 +35,13 @@ int judge_month(int year, int month, int day)
 
 int Total_day(int year, int month, int day)
 {
-    int count_day=0, count_year=year, two_month_day=28;
+    int count_day=0, count_year=year;
+    month_day[1]=Isleap(year, month, day);
 
     int i;
-    for (i=1; i != month; i++)
+    for (i=0; i < month; i++)
     {
-        count_day += judge_month(year,i,day);
+        count_day += month_day[i];
     }
     count_day += day;
     printf("%d年1月1日距离%d年%d月%d日一共过了%d天\n", year, year, month, day, count_day);
@@ -91,27 +82,27 @@ int display_week(int year, int month, int day)
 void display_month(int year, int month, int day)
 {
     // 以下实现打印头两行
-    char *week[7] = {"SUN", "MON", "THS", "WEN", "THU", "FRI", "SAT"};
-    printf("\t\t\t%d年%d月\n", year, month);
+    const char *week[7] = {"SUN", "MON", "THS", "WEN", "THU", "FRI", "SAT"};
+    printf("%23d年%d月\n", year, month);
     for (int i=0; i <7; i++)// 4 x 7 = 28
     {
-        printf("\t%s", week[i]);
+        printf("%4s", week[i]);
     }
     putchar('\n');
 
     // 以下实现打印日历内容
-    int num_day = judge_month(year,month,day);
+    int num_day = month_day[month-1];
     int week_day = display_week(year, month, 1);
 
     // 理解：
     int i, j, k = 1;
     // 打印第一行的空白，因为周数决定空白数
     for (i = 0; i < week_day; i++)
-        printf("\t");
-    for (j = 1; j <= num_day; j++)
+        printf("%4c", ' ');
+    for (j = 1; j <= month_day[month-1]; j++) // 因为数组元素下标比实际月数小1
     {
-        printf("\t%d", j);
-        // 每满 7 天打印换行符
+        printf("%4d", j);
+        // 每逢7个数打印换行符
         if (i%7 == 6)
             printf("\n");
         i++;
