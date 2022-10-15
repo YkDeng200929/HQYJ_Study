@@ -1,0 +1,121 @@
+1、思考：是否可以给指针变量赋一个整数作为地址值，为什么？
+
+
+2、设已有定义：float x；则以下赋值正确的是（）
+A、int *p=(float)x;
+B、float *p=&x;
+C、float p=&x;
+D、float *p=1024;
+
+
+3、以下程序运行后的输出结果是 ：（）
+			main()
+			{ char a[]=”language”,b[]=”programe”;
+			 char *p1,*p2;
+			 int k;
+			 p1=a;p2=b;
+			 for (k=0;k<8;k++)
+			 if (*(p1+k)==*(p2+k))  printf("%c",*(p1+k));
+			}
+
+	Ａ）language		B）gae		C）pro		D）age
+
+
+4、以下不能将s所指字符串正确复制到t所指存储空间的是（）
+A、do{*t++=*s++;}while(*s);
+B、for(i=0;t[i]=s[i];i++);
+C、while(*t=*s){t++;s++}
+D、for(i=0,j=0;t[i++]=s[j++];);
+
+
+5、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int i,s=0,t[]={1,2,3,4,5,6,7,8,9};
+	for(i=0;i<9;i+=2) s+=*(t+i);
+	printf("%d\n",s);
+}
+程序执行后的输出结果是：
+
+
+6、有以下程序：
+#include <stdio.h>
+int main()
+{
+	int i,t[][3]={9,8,7,6,5,4,3,2,1};
+	for(i=0;i<3;i++)
+		printf("%d",t[2-i][i]);
+} 
+程序执行后的输出结果是：
+
+
+7、int year=2009,*p=&year;
+以下不能使变量year中的值增至2010的语句是()
+A、(*p)++;
+B、*p++;
+C、++(*p);
+D、*p+=1;
+
+
+8、有以下程序：
+#include <stdio.h>
+int main()
+{
+	char *a="you";
+	char b[]="Welcome you to China!";
+	
+	int i,j=0;
+	char *p;
+	for(i=0;b[i]!='\0';i++)
+	{
+		if(*a==b[i])
+		{
+			p=a;
+			for(j=i;*p!='\0';j++)
+			{
+				if(*p!=b[j])
+					break;
+				p++;
+			}
+			if(*p=='\0')
+				break;
+		}
+	}
+	printf("%s",&b[i]);
+}
+程序执行后的输出结果是：
+
+
+9、定义a[3][3]二维数组，并从键盘输入1,9,7,2,3,8,4,5,6给二维数组赋值，
+将右上半三角乘m，m由用户输入，并打印数组
+如m=2则，打印值为
+
+
+10、统计一行字符串中单词的个数，单词之间可能有若干空格（编程）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
