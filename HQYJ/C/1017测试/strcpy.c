@@ -18,6 +18,7 @@ int main()
     char arr2[] = "world";
     printf("before:%s %s", arr1, arr2);
     my_strcpy(arr1, arr2);
+    putchar('\0');
     printf("now:%s %s", arr1, arr2);
 
     return 0;
