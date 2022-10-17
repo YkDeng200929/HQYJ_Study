@@ -87,8 +87,11 @@ void display_month(int year, int month, int day)
 
 int main()
 {
-    printf("%d\n", display_week(2022, 10, 15));
-    display_month(2022, 10, 15);
+    int year = 0, month = 0, day = 0;
+    printf("输入年月日:\n");
+    scanf("%d %d %d", &year, &month, &day);
+    printf("该日期是第%d周\n", display_week(year, month, day));
+    display_month(year, month, day);
 
     return 0;
 }
