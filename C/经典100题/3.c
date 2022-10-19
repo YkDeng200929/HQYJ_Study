@@ -17,35 +17,6 @@ int main(void)
 3、两个完全平方数的 积 一定是完全平方数
 */
 
-    int num;
-    int judge = num + 100;
-    int judge2 = num + 100 + 168;
-    for (num = 0; num <= 10; num++)
-    {
-        if (judge % 3 == 0)
-        {
-            if (judge % 9 == 0)
-            {
-                if (judge2 % 3 == 0)
-                {
-                    if (judge2 % 9 == 0)
-                        printf("%d ", num);
-                }
-                else if (judge2 % 3 == 1)
-                    printf("%d ", num);
-            }
-        }
-        else if (judge % 3 == 1)
-        {
-            if (judge2 % 3 == 0)
-            {
-                if (judge2 % 9 == 0)
-                    printf("%d ", num);
-            }
-            else if (judge2 %3 == 1)
-                printf("%d ", num);
-        }
-    }
 
     return 0;
 }
