@@ -1,0 +1,2 @@
+root         1     0  0 00:56 ?        00:00:12 /sbin/init splash
+linux    18386 18384  0 10:25 pts/1    00:00:00 grep init

@@ -1,0 +1,2 @@
+hello
+There have 1 parameter in this shell script, It's 3
