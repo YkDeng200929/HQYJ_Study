@@ -1,6 +1,0 @@
-{
-    "cmake.sourceDirectory": "${workspaceFolder}/C/练习/cmaketest",
-    "files.associations": {
-        "stdio.h": "c"
-    }
-}
