@@ -15,7 +15,7 @@ int quadrate(int x, int y)
 // 三角形
 int triangle(int x, int y)
 {
-    return (x * y )/ 2
+    return (x * y )/ 2;
 }
 
 // 求面积
@@ -25,5 +25,8 @@ int area(int x, int y, int (*function)())
 }
 int main()
 {
+    int x = 5, y = 4;
+    printf("%d\n", area(x, y, triangle));
+
     return 0;
 }

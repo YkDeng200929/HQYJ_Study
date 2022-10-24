@@ -4,15 +4,17 @@ int global_data = 0;
 
 int global_add(void)
 {
-    int ret, i;
+    int i;
     for (i = 1; i <= 100; i++)
     {
-        global_data+=;
+        global_data++;
     }
-    return ret;
+    return global_data;
 }
 
 int main()
 {
+    printf("%d\n", global_add());
+
     return 0;
 }

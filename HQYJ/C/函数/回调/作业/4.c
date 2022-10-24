@@ -32,5 +32,7 @@ int test(int m)
 
 int main()
 {
+    printf("%d\n", test(5));
+
     return 0;
 }

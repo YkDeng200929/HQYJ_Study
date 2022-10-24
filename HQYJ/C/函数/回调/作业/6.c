@@ -17,10 +17,14 @@ void find_max_min(int *max_num, int *min_num)
         }
     }
     *max_num = max;
-    *min_num = min
+    *min_num = min;
 }
 
 int main()
 {
+    int max, min;
+    find_max_min(&max, &min);
+    printf("max: %d min: %d\n", max, min);
+
     return 0;
 }

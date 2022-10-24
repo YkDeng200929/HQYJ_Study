@@ -17,7 +17,7 @@ void sort(int *a, int len)
     }
 }
 
-int *array_function()
+int *array_function(void)
 {
     static int a[5] = {5,4,3,2,1};
     int len = sizeof(a)/sizeof(a[0]);
@@ -27,7 +27,13 @@ int *array_function()
 
 int main()
 {
-
+    int *p = NULL;
+    p = array_function();
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d ", p[i]);
+    }
+    putchar('\n');
 
     return 0;
 }
