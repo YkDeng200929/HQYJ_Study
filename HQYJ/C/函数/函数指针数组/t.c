@@ -51,9 +51,6 @@ int main()
     int len = sizeof(a)/sizeof(a[0]);
     // 函数指针数组; 指针数组的每个元素为函数名
     int (*b[3])() = {sum, arrange, print_arr};
-    //printf("%d\n", cal(a, sum, len));
-    //cal(a, arrange, 5);
-    //cal(a, print_arr, 5);
     for (int i = 0; i < 3; i++)
     {
         b[i](a, 5);

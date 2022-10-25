@@ -7,7 +7,9 @@ struct student
     short score;
 };
 
-void intput_student(struct student *stu, int len)
+typedef struct student students;
+
+void intput_student(students *stu, int len)
 {
     int i;
     for (i = 0; i < len; i++)
@@ -17,11 +19,11 @@ void intput_student(struct student *stu, int len)
         printf("Enter name: ");
         scanf("%s", stu[i].name);
         printf("Enter score: ");
-        scanf("%hd", stu[i].score);
+        scanf("%hd", &stu[i].score);
     }
 }
 
-void output_student(struct student *stu, int len)
+void output_student(students *stu, int len)
 {
     int i;
     for (i = 0; i < len; i++)
@@ -35,10 +37,12 @@ void output_student(struct student *stu, int len)
 int main()
 {
 
-    struct student students[3];
+    students stu[3];
+    students *stu2 = &stu[1];
     int len = 3;
-    intput_student(students, len);
-    output_student(students, len);
+    intput_student(stu, len);
+    output_student(stu, len);
+    printf("id:%d\tname:%s\tscore:%hd\n", stu2->id, stu2->name, stu2->score);
 
     return 0;
 }
