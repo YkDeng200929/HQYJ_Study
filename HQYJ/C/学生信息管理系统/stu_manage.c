@@ -19,9 +19,9 @@ typedef struct
 
 
 // init_classroom   初始化班级信息
-void init_classroom(Class *class, int class_num)
+void init_classroom(Class *class, int num_class)
 {
-    memset(class, 0, sizeof(Class)*class_num);
+    memset(class, 0, sizeof(Class)*num_class);
 }
 
 // input_student    输入单个学生信息
@@ -96,7 +96,7 @@ void delete_info(Class *class, int class_num, int stu_id)
     memset(&((class+class_num)->stu_info[stu_id]), 0, sizeof(Stu));
 }
 
-// 修改学生信息
+// 修改学生信息 (段错误)
 void modify_info(Class *class, int class_num, int stu_id)
 {
     printf("Modify name: ");
@@ -109,7 +109,7 @@ void modify_info(Class *class, int class_num, int stu_id)
     scanf("%d", (class+class_num)->stu_info[stu_id].age);
 }
 
-// 学生分数由低到高排序
+// 学生分数由低到高排序 (无法排序)
 void sort_info(Class *class, int class_num)
 {
     for (int i = 0; i < MAX; i++)
@@ -130,23 +130,29 @@ void sort_info(Class *class, int class_num)
 // show_menu
 void show_menu(Class *class, int num_class)
 {
-    int selection, stu_id, class_num;
+    int selection, stu_id, class_num, judge;
     
     do
     {
-        printf("<1>插入学生到班级\n");
-        printf("<2>删除学生到班级\n");
-        printf("<3>修改学生信息\n");
-        printf("<4>输出所有班级内的学生信息\n");
-        printf("<5>让班级内的学生分数从低到高排序\n");
-        printf("<6>关闭学生系统\n");
+        // 插入学生到班级
+        printf("<1>Insert student to class\n");
+        // 删除班级中的某个学生
+        printf("<2>Delete students info\n");
+        // 修改学生信息
+        printf("<3>Modify students info\n");
+        // 输出所有班级内的学生信息
+        printf("<4>Print all classroom students info\n");
+        // 让学生信息按照成绩由低到高排序
+        printf("<5>Sort info from low to greater one\n");
+        // 关闭系统
+        printf("<6>Close system\n");
         printf("Enter: ");
         scanf("%d", &selection);
         switch (selection)
         {
             case 1: 
             {
-                printf("Enter info------------------\n");
+                printf("Enter info:\n");
                 //printf("Enter stu_id and class_num: ");
                 //scanf("%d %d", &stu_id, &class_num);
                 input_classroom(class, num_class);
@@ -154,7 +160,7 @@ void show_menu(Class *class, int num_class)
             }
             case 2:
             {
-                printf("Delete info-----------------\n");
+                printf("Delete info:\n");
                 printf("Enter stu_id and class_num: ");
                 scanf("%d %d", &stu_id, &class_num);
                 delete_info(class, class_num, stu_id);
@@ -162,7 +168,7 @@ void show_menu(Class *class, int num_class)
             }
             case 3:
             {
-                printf("Modify info------------------\n");
+                printf("Modify info:\n");
                 printf("Enter stu_id and class_num: ");
                 scanf("%d %d", &stu_id, &class_num);
                 modify_info(class, class_num, stu_id);
@@ -170,21 +176,22 @@ void show_menu(Class *class, int num_class)
             }
             case 4:
             {
-                printf("Print all info------------------\n");
+                printf("Print all info\n");
                 output_classroom(class, num_class);
                 break;
             }
             case 5: 
             {
-                printf("Sort info-------------------------\n");
+                printf("Sort info\n");
                 output_classroom(class, num_class);
                 break;
             }
             case 6: free(class); break;
             default: free(class); break;
-            }
+        }
     printf("Do you wanna quit? (y/n)\n");
-    } while (getchar() != 'n');
+    judge = getchar();
+    } while (judge != 'n');
 }
 
 
@@ -193,6 +200,7 @@ int main()
     int num_class, selection = 0;
     Class *HQYJ = NULL;
     HQYJ = (Class *)malloc(sizeof(Class)*num_class);
+    init_classroom(HQYJ, num_class);
 
     printf("Initializing database......\n");
     printf("How many class in HQYJ you wanna create: ");
