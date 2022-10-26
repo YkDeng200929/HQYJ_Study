@@ -2,7 +2,7 @@
 
 int main()
 {
-    char str[] = "jdwioij joje iioj iqwiowfjew iwqeiw jdwjoiwejfiowejf";
+    char str[] = "jdwioij joje iioj iqwiowfjew iwqeiw jdwjoiwejfiowejfjkefjkkff";
     char buf[100];
 
     int max_count = 0, max_index = 0, max = 0, i = 0, j = 0;

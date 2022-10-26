@@ -76,7 +76,7 @@ void output_classroom(Class *class, int num_class)
 {
     for (int i = 0; i < num_class; i++)
     {
-        printf("Class: %d============================================================\n", i+1);
+        printf("===============================================CLASS: %d============================================\n", i+1);
         for (int j = 0; j < MAX; j++)
         {
             printf("Name: %s, Id: %d, Score: %d, Age: %d",
@@ -134,7 +134,7 @@ void show_menu(Class *class, int num_class)
     //char judge = 'y';
     
         // 插入学生到班级
-        printf("Selections=================================\n");
+        printf("Selections============================================================================\n");
         printf("<1>Insert student to class\n");
         // 删除班级中的某个学生
         printf("<2>Delete students info\n");
@@ -148,7 +148,7 @@ void show_menu(Class *class, int num_class)
         printf("<6>Close system\n");
         printf("Enter: ");
         scanf("%d", &selection);
-        printf("===============================================\n");
+        printf("=======================================================================================\n");
         switch (selection)
         {
             case 1: 
