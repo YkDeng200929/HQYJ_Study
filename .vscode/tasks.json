@@ -8,6 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
+                "${fileDirname}\\func.c",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],

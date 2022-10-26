@@ -50,6 +50,7 @@ void output_student(Class *class, int class_num, int stu_id)
     );
 }
 
+// OK
 // input_classroom  给班级统一赋值
 // 参数: num_class 表示 班级数
 void input_classroom(Class *class, int num_class)
@@ -71,6 +72,7 @@ void input_classroom(Class *class, int num_class)
     }
 }
 
+// OK
 // output_classroom 输出班级中所有学生信息
 void output_classroom(Class *class, int num_class)
 {
@@ -90,10 +92,16 @@ void output_classroom(Class *class, int num_class)
     }
 }
 
-// 删除学生信息
+// 删除学生信息 无法删除第一班的信息
 void delete_info(Class *class, int class_num, int stu_id)
 {
-    memset(&((class+class_num)->stu_info[stu_id]), 0, sizeof(Stu));
+    class_num -= 1;
+    stu_id -= 1;
+    //memset(&((class+class_num)->stu_info[stu_id]), 0, sizeof(Stu));
+    (class+class_num)->stu_info[stu_id].age = 0;
+    (class+class_num)->stu_info[stu_id].id = 0;
+    (class+class_num)->stu_info[stu_id].score = 0;
+    strcpy((class+class_num)->stu_info[stu_id].name, 0);
 }
 
 // 修改学生信息 (无段错误, 但无法修改值)
