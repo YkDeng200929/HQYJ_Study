@@ -176,6 +176,25 @@ bool reverse(struct node *phead)
     */
 }
 
+bool new_reverse(struct node *phead)
+{
+    struct node *prev = NULL, *after = NULL;
+    int count = 0;
+    for (prev = phead->next; prev != NULL; prev = prev->next)
+    {
+        for (after = prev; after->next != NULL; after = after->next)
+        {   
+            if (after->data < after->next->data)
+            {
+                int temp;
+                temp = after->data;
+                after->data = after->next->data;
+                after->next->data = temp;
+            }
+        }
+    }
+}
+
 // 打印链表 
 void print_link_list(struct node *phead)
 {
@@ -204,11 +223,13 @@ int main(void)
     insert_val_tail(&head, 7);
 
     print_link_list(&head);
-    insert_in_middle(&head, 7, 250);
+    insert_in_middle(&head, 7, 1);
     print_link_list(&head);
     //del_node(&head, 7);
     print_link_list(&head);
-    reverse(&head);
+    printf("逆序中\n");
+    new_reverse(&head);
+    printf("逆序完成\n");
     print_link_list(&head);
 
     return 0;
