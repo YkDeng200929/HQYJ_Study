@@ -49,7 +49,7 @@ void init(struct node *phead)
 void print_cycle(struct node *phead)
 {
     struct node *print;
-    for (print = phead; print != phead; print = print->next)
+    for (print = phead->next; print != phead; print = print->next)
     {
         printf("%d ", print->data);
     }
