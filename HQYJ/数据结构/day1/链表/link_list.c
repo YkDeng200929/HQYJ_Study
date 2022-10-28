@@ -146,43 +146,15 @@ bool delete_val(struct node *phead, int val)
     return true;
 }
 
-// reverse
-bool reverse(struct node *phead)
-{
-    // 遍历到尾部
-    struct node *tail, *temp, *prev, *final, *target;
-    int count = 0;
-    target = phead->next;
-    for (tail = phead; tail->next != NULL; tail = tail->next)
-    {
-        if (tail->next->next == NULL)
-            final = tail; // 存放最后一个元素的地址   
-        count++;
-    }
-    tail->next = phead->next;
-    phead->next->next = NULL;
-    phead->next = tail;// 现在头是 250
-    // 反转指针
-    printf("target: %d\n", target->data);
-    printf("final: %d\n", final->data);
-    printf("count: %d\n", count);
-    /*
-    for (prev = phead; prev != final; prev = prev->next)
-    {
-        temp = prev;
-        prev = prev->next;
-        prev->next = temp;
-    }
-    */
-}
-
-bool new_reverse(struct node *phead)
+// my_逆序链表
+bool my_reverse(struct node *phead)
 {
     struct node *prev = NULL, *after = NULL;
     int count = 0;
+    // 冒泡排序交换值
     for (prev = phead->next; prev != NULL; prev = prev->next)
     {
-        for (after = prev; after->next != NULL; after = after->next)
+        for (after = phead->next; after->next != NULL; after = after->next)
         {   
             if (after->data < after->next->data)
             {
@@ -193,6 +165,30 @@ bool new_reverse(struct node *phead)
             }
         }
     }
+}
+
+// teacher 逆序链表
+void reverse_linklist(struct node *phead)
+{
+    struct node *pbefore = phead;
+    struct node *pcur = phead->next;
+    struct node *pafter;
+
+    // 没有头节点直接逆序会段错误
+    if (phead->next == NULL)
+        return ;
+    
+    // 判断条件为 pcur
+    while (pcur != NULL)
+    {
+        pafter = pcur->next;
+        pcur->next = pbefore;
+        pbefore = pcur;
+        pcur = pafter;
+    }
+    phead->next->next = NULL;
+    phead->next = pbefore;
+    return ;
 }
 
 // 打印链表 
@@ -221,35 +217,20 @@ int main(void)
     insert_val_tail(&head, 3);
     insert_val_tail(&head, 5);
     insert_val_tail(&head, 7);
+    insert_val_tail(&head, 9);
 
-    print_link_list(&head);
-    insert_in_middle(&head, 7, 1);
-    print_link_list(&head);
+    //print_link_list(&head);
+    //insert_in_middle(&head, 7, 1);
+    //print_link_list(&head);
     //del_node(&head, 7);
     print_link_list(&head);
     printf("逆序中\n");
+    //reverse(&head);
     new_reverse(&head);
     printf("逆序完成\n");
+    print_link_list(&head);
+    reverse_linklist(&head);
     print_link_list(&head);
 
     return 0;
 }
-/*
-// 逆序
-bool rev_link_list(struct node *phead)
-{
-    struct node *prev, *after, *temp, *pcur, *pcur2;
-    for (pcur = phead; pcur->next != NULL; pcur = pcur->next)
-    {
-        for (pcur2 = phead->next; pcur2->next->next != NULL; pcur2 = pcur2->next)
-        {
-            if (pcur2->data < pcur2->next->data)
-            {
-                temp = pcur2->next;
-                pcur2->next = pcur2->next->next;
-                pcur2->next->next = temp;
-            }
-        }
-    }
-}
-*/
