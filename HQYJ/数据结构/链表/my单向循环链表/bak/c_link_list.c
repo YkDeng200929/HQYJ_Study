@@ -9,14 +9,14 @@ struct node
     struct node *next;
 };
 
-// 初始化  
+// 初始化 (没问题) 
 void init(struct node *phead)
 {
     phead->data = 6;
     phead->next = phead;
 }
 
-// 尾插 
+// 尾插 (没问题)
 bool insert_val_tail(struct node *phead, int val)
 {
     struct node *pcur;
@@ -36,7 +36,7 @@ bool insert_val_tail(struct node *phead, int val)
     pnew->next = phead;
 }
 
-// 插入节点
+// 插入节点 (没问题)
 bool insert_val(struct node *phead, int target ,int val)
 {
     struct node *pnew, *pcur;
@@ -55,10 +55,11 @@ bool insert_val(struct node *phead, int target ,int val)
     return true;
 }
 
+// 删除节点 (无法删除头节点)
 bool del_val(struct node *phead, int target)
 {
-    struct node *find, *trash;
-    for (find = phead->next; find != phead && find->next->data != target; find = find->next)
+    struct node *prev, *find, *trash;
+    for (prev = phead, find = prev->next; find != phead && find->next->data != target; prev = prev->next, find = prev->next)
     {}
     // 判断是否遍历到目标值
     if (find == phead)
@@ -66,10 +67,11 @@ bool del_val(struct node *phead, int target)
     // 如果目标值为头节点
     if (phead->data == target && find->next->data == target)
     {
-        trash = find->next;
-        find->next = find->next->next;
+        trash = find;
+        prev->next = find->next->next;
         free(trash);
         phead = find->next;
+        printf("头节点删除完毕\n");
         return true;
     }
     // 当前 find 为 target 所在位置的前一个节点
@@ -82,24 +84,38 @@ bool del_val(struct node *phead, int target)
     return true;
 }
 
-// 打印链表
+// 打印链表 (没问题)
 void print_link(struct node *phead)
 {
     struct node *print;
+    /*
     for(print = phead; print->next != phead; print = print->next)
     {
         printf("%d ", print->data);
     }
     putchar('\n');
+    */
+   //print = phead;
+   //while (print->next != print)
 }
 
+// 约瑟夫, 推出所有节点
 bool josephr(struct node *phead, int k, int m)
 {
     struct node *find;
-    // 如果队列不为空
-    // 寻找 k
-    // 寻找到 m
-    // 推出节点
+    int count = 1;
+    // 如果队列不为空 (条件: phead->next = phead)
+    while (phead->next != phead)
+    {
+        // 寻找 k
+        for (find = phead; find->data != k; find = find->next)
+        {}
+        // 寻找到 m
+        for (find; count <= m; find = find->next)
+        {}
+        // 推出节点
+        del_val(phead, find->data);
+    }
 }
 
 int main(void)
@@ -111,10 +127,8 @@ int main(void)
     {
         insert_val_tail(&head, arr[i]);
     }
-    insert_val(&head, 6, 99);
-    del_val(&head, 6);
-    print_link(&head);
-
+    //del_val(&head, 6);
+    //print_link(&head);
 
     return 0;
 }
