@@ -55,6 +55,24 @@ bool insert_val(struct node *phead, int target ,int val)
     return true;
 }
 
+bool del_val(struct node *phead, int target)
+{
+    struct node *find, *temp;
+    for (find = phead->next; find != phead && find->next->data != target; find = find->next)
+    {}
+    // 判断是否遍历到目标值
+    if (find == phead)
+        return false;
+    // 当前 find 为 target 所在位置的前一个节点
+    // 需要删除 find->next;
+    // 将 find 链接到 find->next->next
+    temp = find->next;
+    find->next = find->next->next;
+    // 将 find->next 移除链表
+    free(temp);
+    return true;
+}
+
 // 打印链表
 void print_link(struct node *phead)
 {
@@ -66,18 +84,24 @@ void print_link(struct node *phead)
     putchar('\n');
 }
 
+bool josephr(struct node *phead, int k, int m)
+{
+    struct node *find;
+    // 如果队列不为空
+    // 寻找 k
+    // 寻找到 m
+    // 推出节点
+}
+
 int main(void)
 {
     struct node head;
     init(&head);
-    insert_val_tail(&head,10);
-    insert_val_tail(&head,20);
-    insert_val_tail(&head,30);
-    insert_val_tail(&head,40);
-    insert_val_tail(&head,50);
-    insert_val_tail(&head,60);
-    print_link(&head);
-    insert_val(&head, 20, 33);
+    int arr[8] = {6,2,7,4,3,5,1,8};
+    for (int i = 0; i < 8; i++)
+    {
+        insert_val_tail(&head, arr[i]);
+    }
     print_link(&head);
 
 
