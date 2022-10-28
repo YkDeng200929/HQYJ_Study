@@ -20,7 +20,7 @@ void init_dlinklist(struct node *phead)
 }
 
 // my 插入元素(尾插) :: 结合 my_insert_使用有问题
-bool my_insert_data(struct node *phead, int val)
+bool my_insert_val_tail(struct node *phead, int val)
 {
     struct node *new_node = NULL;
     new_node = (struct node *)malloc(sizeof(struct node));
@@ -66,7 +66,7 @@ bool insert_val_tail(struct node *phead, int val)
 }
 
 // my 中间插入
-bool my_insert_in_middle(struct node *phead, int target, int val)
+bool my_insert_val_after(struct node *phead, int target, int val)
 {
     struct node *new_node = NULL;
     struct node *find = phead;
@@ -101,19 +101,90 @@ bool my_insert_in_middle(struct node *phead, int target, int val)
     return false;
 }
 
+// teacher 中间插入
+
+bool insert_val_after(struct node *phead, int val, int newval)
+{
+    struct node * pcur;
+    // 遍历链表找到目标值
+    for (pcur = phead->next; pcur != NULL && pcur->data != val; pcur = pcur->next)
+    {}
+    if (!pcur)
+        return false;
+    struct node *pnew = (struct node *)malloc(sizeof(struct node));
+    if (!pnew)
+        return false;
+    pnew->data = newval;
+    pnew->prev = pnew->next = NULL;
+
+    // 将新节点的前后链接节点接入
+    pnew->prev = pcur;
+    pnew->next = pcur->next;
+
+    //!!!
+    // 当pcur 到达尾部时 直接将新节点引入
+    if (pcur->next != NULL)
+    {
+        pcur->next->prev = pnew;
+        pcur->next = pnew;
+    }
+
+    return true;
+}
+
 // my 删除元素
-bool my_del_val(struct node *phead, int target, int val)
+bool my_delete_val(struct node *phead, int target)
 {
     struct node *find = NULL;
     struct node *temp = NULL;
-    for (find = phead->next; find != NULL; find = find->next)
+    struct node *pre = NULL;
+    for (pre = phead, find = phead->next; find != NULL; find = find->next, pre = phead->next)
     {
-        if (find )
+        if (find->next->data == target)
+        {
+            temp = find->next->next;
+            free(find->next);
+            find->next = temp;
+            temp->prev = find;
+            
+            return true;
+        }
+        /*
+        else if ((find->next->next->data == target) && (find->next->next->next == NULL))
+        {
+            free(find->next->next);
+            find->next = NULL;
+        }
+        */
     }
+
+    return false;
 }
 
+// teacher 删除节点
+bool delete_val(struct node *phead, int val)
+{
+    struct node *pcur;
+
+    for (pcur = phead->next; pcur != NULL && pcur->data != val; pcur = pcur->next)
+    {}
+    if (!pcur)
+        return false;
+
+    pcur->prev->next = pcur->next;
+    if (pcur->next != NULL)
+    {
+        pcur->next->prev = pcur->prev;
+        pcur->prev = pcur->next = NULL;
+    }
+
+    free(pcur);
+
+}
+
+
 // 打印双向链表
-void print_link(struct node *phead)
+void my_print_dlinklist(struct node *phead)
 {
     struct node *find = phead->next;
     while (find->next != NULL)
@@ -140,25 +211,21 @@ int main(void)
 {
     struct node head;
     init_dlinklist(&head);
-    my_insert_data(&head, 10);
-    my_insert_data(&head, 20);
-    my_insert_data(&head, 30);
-    my_insert_data(&head, 40);
-    printf("Insert after: ");
-    print_link(&head);
-    printf("Insert after: ");
-    my_insert_data(&head, 50);
-    print_link(&head);
-    my_insert_in_middle(&head, 20, 99);
-    printf("After insert in middle: ");
-    print_link(&head);
-    printf("After insert in middle: ");
-    my_insert_in_middle(&head, 40, 80);
-    print_link(&head);
-    my_insert_in_middle(&head, 66, 99);
-    printf("尾插\n");
-    my_insert_in_middle(&head, 50, 77);
-    print_dlinklist(&head);
+    my_insert_val_tail(&head, 10);
+    my_insert_val_tail(&head, 20);
+    my_insert_val_tail(&head, 30);
+    my_insert_val_tail(&head, 40);
+    my_insert_val_tail(&head, 50);
+    my_print_dlinklist(&head);
+    my_insert_val_after(&head, 50, 99);
+    printf("After insert after:\n");
+    my_print_dlinklist(&head);
+    printf("After del\n");
+    delete_val(&head, 20);
+    my_print_dlinklist(&head);
+    printf("Del 99\n");
+    delete_val(&head, 99);
+    my_print_dlinklist(&head);
 
     return 0;
 }
