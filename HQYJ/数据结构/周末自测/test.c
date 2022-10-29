@@ -58,12 +58,24 @@ void print(struct node *phead)
 // 出队
 bool out(struct node *phead, int k, int m)
 {
-    struct node *find_k;
+    struct node *find_k, *find_m;
     struct node *head;
+    int count = 1;
     for (find_k = phead; find_k->next->data != k; find_k = find_k->next)
     {}
     // 让头等于 k 的地址 
     head = find_k->next;
+    // 基于 head 来出队
+    while (head->next != head)
+    {
+        find_m = head;
+        for (count = 1; count <= m; count++)
+        {
+            find_m = find_m->next;
+        }
+        find_m->next = find_m->next->next;
+        free(find_m);
+    }
 }
 
 // 插入目标元素 
@@ -86,6 +98,7 @@ int main()
     print(&head);
     // k = 3, m = 4;
     out(&head, 3, 4);
+    print(&head);
 
     return 0;
 }
