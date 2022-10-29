@@ -55,8 +55,8 @@ void print(struct node *phead)
     putchar('\n');
 }
 
-// 出队 (段错误)
-bool out(struct node *phead, int k, int m)
+// 出队 (ok
+struct node * out(struct node *phead, int k, int m)
 {
     struct node *find_k, *prev, *del;
     int count = 1;
@@ -82,7 +82,7 @@ bool out(struct node *phead, int k, int m)
     printf("find_k:%d, phead: %d\n", find_k->data, phead->data);
     printf("p_k: %d, p_k_next: %d\n", find_k, find_k->next);
     
-    return true;
+    return find_k;
 }    
 
 
@@ -100,14 +100,15 @@ void josepher(struct node *phead)
 
 int main()
 {
-    struct node head;
+    struct node head, *fin;
     init(&head);
     josepher(&head);
     print(&head);
     // k = 3, m = 4;
     printf("OK\n");
-    out(&head, 3, 4);
+    fin = out(&head, 3, 4);
     printf("outok\n");
+    print(fin);
 
     return 0;
 }
