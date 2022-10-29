@@ -55,14 +55,37 @@ void print(struct node *phead)
     putchar('\n');
 }
 
+// 出队
+bool out(struct node *phead, int k, int m)
+{
+    struct node *find_k;
+    struct node *head;
+    for (find_k = phead; find_k->next->data != k; find_k = find_k->next)
+    {}
+    // 让头等于 k 的地址 
+    head = find_k->next;
+}
+
+// 插入目标元素 
+void josepher(struct node *phead)
+{
+    insert_val_tail(phead, 2);
+    insert_val_tail(phead, 7);
+    insert_val_tail(phead, 4);
+    insert_val_tail(phead, 3);
+    insert_val_tail(phead, 5);
+    insert_val_tail(phead, 1);
+    insert_val_tail(phead, 8);
+}
+
 int main()
 {
     struct node head;
     init(&head);
-    insert_val_tail(&head, 7);
-    insert_val_tail(&head, 9);
-    insert_val_tail(&head, 4);
+    josepher(&head);
     print(&head);
+    // k = 3, m = 4;
+    out(&head, 3, 4);
 
     return 0;
 }
