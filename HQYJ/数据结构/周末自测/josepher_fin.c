@@ -100,15 +100,16 @@ void josepher(struct node *phead)
 
 int main()
 {
-    struct node head, *fin;
-    init(&head);
-    josepher(&head);
-    print(&head);
+    struct node *head = NULL;
+    head = (struct node *)malloc(sizeof(struct node));
+    init(head);
+    josepher(head);
+    print(head);
     // k = 3, m = 4;
     printf("OK\n");
-    fin = out(&head, 3, 4);
+    head = out(head, 4, 3);
     printf("outok\n");
-    print(fin);
+    print(head);
 
     return 0;
 }
