@@ -51,32 +51,40 @@ void print(struct node *phead)
     {
         printf("%d ", print->data);
     }
-        printf("%d ", print->data);
+    printf("%d ", print->data);
     putchar('\n');
 }
 
-// 出队
+// 出队 (段错误)
 bool out(struct node *phead, int k, int m)
 {
-    struct node *find_k, *find_m;
-    struct node *head;
+    struct node *find_k, *prev, *del;
     int count = 1;
-    for (find_k = phead; find_k->next->data != k; find_k = find_k->next)
+    for (find_k = phead; find_k->data != k; find_k = find_k->next)
     {}
-    // 让头等于 k 的地址 
-    head = find_k->next;
-    // 基于 head 来出队
-    while (head->next != head)
+    // 基于 find_k 来出队
+    while (find_k->next != find_k)
     {
-        find_m = head;
-        for (count = 1; count <= m; count++)
+        prev = find_k, del = prev->next;
+        for (count = 1; count < m; prev = prev->next, del = prev->next, count++)
+        {}
+        if (del->data == k)
         {
-            find_m = find_m->next;
+            prev = prev->next;
+            del = prev->next;
+            prev->next = del->next;
+            free(del);
+            continue;
         }
-        find_m->next = find_m->next->next;
-        free(find_m);
+        prev->next = del->next;
+        free(del);
     }
-}
+    printf("find_k:%d, phead: %d\n", find_k->data, phead->data);
+    printf("p_k: %d, p_k_next: %d\n", find_k, find_k->next);
+    
+    return true;
+}    
+
 
 // 插入目标元素 
 void josepher(struct node *phead)
@@ -97,8 +105,9 @@ int main()
     josepher(&head);
     print(&head);
     // k = 3, m = 4;
+    printf("OK\n");
     out(&head, 3, 4);
-    print(&head);
+    printf("outok\n");
 
     return 0;
 }
