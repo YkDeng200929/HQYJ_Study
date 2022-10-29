@@ -68,7 +68,7 @@ bool out(struct node *phead, int k, int m)
         prev = find_k, del = prev->next;
         for (count = 1; count < m; prev = prev->next, del = prev->next, count++)
         {}
-        if (del->data == k)
+        if (del == find_k)
         {
             prev = prev->next;
             del = prev->next;
