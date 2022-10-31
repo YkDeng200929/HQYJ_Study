@@ -75,11 +75,21 @@ bool pop_val(struct linkstack *ls, int *pval)
 
 void print(struct linkstack *ls)
 {
+    // 直接用 ls 作为值操作
+    /*
     do
     {
         printf("%d ", ls->top->data);
+        // 这里就会直接改变 值
         ls->top = ls->top->next;
     } while(ls->top != NULL);
+    */
+    struct node *print = ls->top;
+    do
+    {
+        printf("%d ", print->data);
+        print = print->next;     
+    } while(print != NULL);
 }
 
 int main(void)
@@ -94,10 +104,10 @@ int main(void)
     out(&lstk);
     int val;
     //pop_val(&lstk, &val);
-    while (pop_val(&lstk, &val))
-    {
-        printf("%d", val);
-    }
+    //while (pop_val(&lstk, &val))
+    //{
+    //    printf("%d", val);
+    //}
 
     return 0;
 }
