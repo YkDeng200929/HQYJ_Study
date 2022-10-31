@@ -40,6 +40,16 @@ bool deque(struct queue *q)
     return true;
 }
 
+bool new_deque(struct queue *q)
+{
+    // front 依次后移, 就代表头出队了
+    while (q->front != q->rear)
+    {
+        printf("%d\n", q->data[q->front]);
+        q->front++;
+    }
+}
+
 int main(void)
 {
     struct queue que;
@@ -48,8 +58,7 @@ int main(void)
     enque(&que, 20);
     enque(&que, 30);
     enque(&que, 40);
-    deque(&que);
-
+    new_deque(&que);
 
     return 0;
 }

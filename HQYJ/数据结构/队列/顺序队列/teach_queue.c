@@ -21,13 +21,26 @@ bool enqueue(struct queue *q, int val)
     return true;
 }
 
-bool dequeue(struct queue *q)
+bool dequeue(struct queue *q, int *pval)
 {
+    if (q->front == q->rear)
+    return false;
+    *pval = q->data[q->front];
+    q->front++;
+    return true;
 }
 
 int main(void)
 {
+    struct queue que;
+    int val;
+    enqueue(&que, 10);
+    enqueue(&que, 20);
+    enqueue(&que, 30);
+    while(dequeue(&que, &val))
+    {
+        printf("%d\n", val);
+    }
 
-
-    return 0
+    return 0;
 }
