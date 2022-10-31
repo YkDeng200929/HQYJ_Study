@@ -117,6 +117,7 @@ bool insert_val_after(struct node *phead, int val, int newval)
         return false;
     struct node *pnew = (struct node *)malloc(sizeof(struct node));
 
+    //³õÊ¼»¯pnew
     pnew->data = newval;
     pnew->prev = pnew->next = pnew;
 
