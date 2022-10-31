@@ -58,7 +58,11 @@ int main(void)
     enque(&que, 20);
     enque(&que, 30);
     enque(&que, 40);
+    printf("First\n");
     new_deque(&que);
+    printf("Second\n");
+    enque(&que, 30);
+    // 顺序队列出完队列后不能再进入元素, 而循环队列可以
 
     return 0;
 }
