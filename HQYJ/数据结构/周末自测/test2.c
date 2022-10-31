@@ -88,7 +88,7 @@ struct node * out(struct node *phead, int k, int m)
             prev->next = del->next;
             free(del);
     }
-    printf("find_k: %d, find_k->next: %d, find_k->data: %d\n", find_k, find_k->next, find_k->data);
+    printf("head: %d, head->next: %d\nhead->data: %d\n", find_k, find_k->next, find_k->data);
     return find_k;
 }
 
