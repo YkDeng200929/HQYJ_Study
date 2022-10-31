@@ -81,7 +81,7 @@ bool de_linkqueue(struct linkqueue *lq, int *pval)
     if (lq->front == lq->rear)
     return false;
 
-    // [rear] <-- [] <-- [] <--[] <--[head(front)]
+    // [rear] <-- [  ] <-- [  ] <--[  ] <--[head(front)]
     struct node *ptemp;
     ptemp = lq->front->next;
 
