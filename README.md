@@ -1,4 +1,4 @@
-# HQYJ_Study
+# Study
 # C高级
 # 数据结构
 - 顺序表
