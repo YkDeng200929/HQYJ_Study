@@ -22,6 +22,7 @@ void my_init_hashtable(struct hashtable *hs)
     hs->length = 0;
 }
 
+// 开放地址法解决冲突
 // my insert hash table
 bool my_insert(struct hashtable *ht, int *arr)
 {
@@ -113,14 +114,14 @@ int main(void)
     struct hashtable htab;
     my_init_hashtable(&htab);
     //my_insert(&htab, arr);
-    for (int i = 0; i < MAX; i++)
-    {
-        insert_hashtable(&htab, arr[i]);
-    }
-    print(&htab);
-    my_search_hashtable(&htab, 24);
-    my_search_hashtable(&htab, 10);
-    my_search_hashtable(&htab, 99);
+    //for (int i = 0; i < MAX; i++)
+    //{
+    //    insert_hashtable(&htab, arr[i]);
+    //}
+    //print(&htab);
+    //my_search_hashtable(&htab, 24);
+    //my_search_hashtable(&htab, 10);
+    //my_search_hashtable(&htab, 99);
 
     return 0;
 }
