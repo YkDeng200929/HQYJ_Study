@@ -98,6 +98,15 @@ int get_height(struct btree *t)
     }
 }
 
+int depth_tree(struct btree *tr, int dep)
+{
+    if (!tr)
+    return dep;
+    dep++;
+    // 依次逐层由上至下比较左右分支的长度
+    return depth_tree(tr->left, dep) > depth_tree(tr->right, dep) ? depth_tree(tr->left, dep) : depth_tree(tr->right, dep);
+}
+
 int main(void)
 {
     struct btree *btr;
@@ -110,6 +119,8 @@ int main(void)
     get_high(btr);
     putchar('\n');
     printf("high: %d\n", get_height(btr));
+    int dep = 0;
+    printf("%d\n", depth_tree(btr, dep));
 
     return 0;
 }
