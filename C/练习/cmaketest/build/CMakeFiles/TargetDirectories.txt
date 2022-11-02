@@ -1,3 +1,0 @@
-D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/C/练习/cmaketest/build/CMakeFiles/cmaketest.dir
-D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/C/练习/cmaketest/build/CMakeFiles/edit_cache.dir
-D:/onedrive/ykdeng_ttdhx/OneDrive - ttdhx/Laptop/Desktop/hqyj/C/练习/cmaketest/build/CMakeFiles/rebuild_cache.dir
