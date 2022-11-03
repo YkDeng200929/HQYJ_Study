@@ -9,7 +9,7 @@ int main(void)
     log = fopen("log.txt", "w");
     if (fp == NULL)
     {
-        perror("Hello"); // 用户自定义出错标签 (会在出错字段前面添加用户自定义的标签)
+        perror("Hello\n"); // 用户自定义出错标签 (会在出错字段前面添加用户自定义的标签)
         // void perror(const char *s)
         return -1;
     }
