@@ -19,9 +19,10 @@ int main(void)
 	}
 	fwrite(&Book1, sizeof(Book1), 1, fp);
 	//fseek(fp, -sizeof(Book1), SEEK_CUR);
-	fseek(fp, 0, SEEK_SET );
+	//fseek(fp, 0, SEEK_SET );
 	//fseek(fp, -sizeof(Book1), SEEK_END);
 	//fread(&Book2, sizeof(Book2), 1, fp);
+	rewind(fp); // 直接将文件流指针指向开头 <=====> fseek(stream, size, SEEK_SET)
 	fread(&Book2, 10, 1, fp);
 	printf("%s %d\n", Book2.name, Book2.price);
 	fclose(fp);
