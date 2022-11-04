@@ -2,10 +2,10 @@
 
 int main(void)
 {
-	//FILE *fp;
-	//fp = fopen("org.txt", "r");
+	FILE *fp;
+	fp = fopen("org.txt", "r");
 	char buf[8] = {0};
-	fgets(buf, 8, stdin);
+	fgets(buf, 8, fp);
 	printf("%s",buf); 
 
 
