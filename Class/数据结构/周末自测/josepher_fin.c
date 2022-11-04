@@ -73,12 +73,14 @@ struct node * out(struct node *phead, int k, int m)
             prev = prev->next;
             del = prev->next;
             prev->next = del->next;
+            printf("%d", del->data);
             free(del);
             continue;
         }
         prev->next = del->next;
         free(del);
     }
+    putchar('\n');
     printf("find_k:%d, phead: %d\n", find_k->data, phead->data);
     printf("p_k: %d, p_k_next: %d\n", find_k, find_k->next);
     
