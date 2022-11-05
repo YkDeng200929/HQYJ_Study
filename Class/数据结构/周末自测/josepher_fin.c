@@ -10,7 +10,7 @@ struct node
 // 初始化
 void init(struct node *phead)
 {
-    phead->data = 6;
+    phead->data = 1;
     phead->next = phead;
 }
 
@@ -56,29 +56,36 @@ void print(struct node *phead)
 }
 
 // 出队 (ok
-struct node * out(struct node *phead, int k, int m)
+struct node * out(struct node *phead, int k, int m, int n)
 {
     struct node *find_k, *prev, *del;
-    int count = 1;
+    int count = 1, len = 1;
     for (find_k = phead; find_k->data != k; find_k = find_k->next)
     {}
     // 基于 find_k 来出队
-    while (find_k->next != find_k)
+    prev = find_k, del = prev->next;
+    while (len <= n)
     {
-        prev = find_k, del = prev->next;
-        for (count = 1; count < m; prev = prev->next, del = prev->next, count++)
+        //prev = find_k, del = prev->next;
+        for (count = 1; count < m-1; prev = prev->next, del = prev->next, count++)
         {}
+        /*
         if (del == find_k)
         {
             prev = prev->next;
             del = prev->next;
             prev->next = del->next;
             printf("%d", del->data);
+            prev = del->next;
             free(del);
             continue;
         }
+        */
         prev->next = del->next;
+        printf("%d", del->data);
+        prev = del->next;
         free(del);
+        len++;
     }
     putchar('\n');
     printf("find_k:%d, phead: %d\n", find_k->data, phead->data);
@@ -92,11 +99,11 @@ struct node * out(struct node *phead, int k, int m)
 void josepher(struct node *phead)
 {
     insert_val_tail(phead, 2);
-    insert_val_tail(phead, 7);
-    insert_val_tail(phead, 4);
     insert_val_tail(phead, 3);
+    insert_val_tail(phead, 4);
     insert_val_tail(phead, 5);
-    insert_val_tail(phead, 1);
+    insert_val_tail(phead, 6);
+    insert_val_tail(phead, 7);
     insert_val_tail(phead, 8);
 }
 
@@ -109,9 +116,9 @@ int main()
     print(head);
     // k = 3, m = 4;
     printf("OK\n");
-    head = out(head, 4, 3);
+    head = out(head, 3, 4, 8);
     printf("outok\n");
-    print(head);
+    //print(head);
 
     return 0;
 }
