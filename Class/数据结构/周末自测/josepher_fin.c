@@ -43,6 +43,16 @@ bool insert_val_tail(struct node *phead, int val)
     return false;
 }
 
+// 头插
+bool insert_val_head(struct node *phead, int val)
+{
+    struct node *pnew = (struct node *)malloc(sizeof(struct node));
+    if (!pnew) return false;
+    pnew->data = val;
+    pnew->next = phead->next;
+    phead->next = pnew;    
+}
+
 // 打印
 void print(struct node *phead)
 {
@@ -98,21 +108,21 @@ struct node * out(struct node *phead, int k, int m, int n)
 // 插入目标元素 
 void josepher(struct node *phead)
 {
-    insert_val_tail(phead, 2);
-    insert_val_tail(phead, 3);
-    insert_val_tail(phead, 4);
-    insert_val_tail(phead, 5);
-    insert_val_tail(phead, 6);
-    insert_val_tail(phead, 7);
-    insert_val_tail(phead, 8);
+    int arr[] = {1,2,3,4,5,6,7,8};
+    for (int i = sizeof(arr)/sizeof(arr[0])-1; i > 0; i--)
+    {
+        //printf("test\n");
+        insert_val_head(phead, arr[i]);
+    }
 }
 
 int main()
 {
-    struct node *head = NULL;
-    head = (struct node *)malloc(sizeof(struct node));
+    struct node *head = (struct node *)malloc(sizeof(struct node));
     init(head);
+    printf("init ok\n");
     josepher(head);
+    printf("insert ok1\n");
     print(head);
     // k = 3, m = 4;
     printf("OK\n");
