@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <dirent.h>
+#include <errno.h>
+
+int main(void)
+{
+    struct dirent *testdir = NULL;
+    DIR *dp;
+
+    dp= opendir("dir");
+    if (dp == NULL)
+    {
+        perror("dir");
+        return -1;
+    }
+    testdir = readdir(dp);
+    printf("读取所有文件名字\n");
+    errno = 0;
+    for (testdir; testdir != NULL; testdir = readdir(dp))
+    {
+        // 判断是错误还是文件结尾
+        if (errno != 0)
+        {
+            perror("readdir");
+            return -1;
+        }
+        else
+        {
+            printf("EOF\n");
+            break;
+        }
+        printf("d_name: %s\n", testdir->d_name);
+    }
+    
+    closedir(dp);
+
+    return 0;
+}
