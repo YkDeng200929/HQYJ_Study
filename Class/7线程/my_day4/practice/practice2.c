@@ -13,6 +13,7 @@ void * func1(void * arg)
 {
     int fd = *(int *)arg;
     int len;
+    // ssize_t 返回值缺少, 无法判断错误
     while(1)
     {
         char buf[20] = {0};
@@ -25,9 +26,12 @@ void * func1(void * arg)
             perror("write");
             return ;
         }
+        // lseek 应放最尾部
         lseek(fd, -len, SEEK_CUR);
         if (strncmp(buf, "quit", 4) == 0)
         {
+            pthread_cancel(tid1);
+            // 少了上面这句
             break;
         }
     }
@@ -46,6 +50,7 @@ void * func2(void * arg)
         {
             break;
         }
+        // 如果读到文件结尾的条件缺少 read 的返回值为 0
         printf("%s", buf);
     }
     pthread_exit(NULL);
