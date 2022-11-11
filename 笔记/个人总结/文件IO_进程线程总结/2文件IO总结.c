@@ -25,8 +25,10 @@ int main(void)
     memset(buf, 0, sizeof(buf));
     fgets(buf, sizeof(buf), stdin);
     write(fd2, buf, sizeof(buf));
+    
+    //4. 定位文件使用lseek(fd, offset, whence)
 
-    //4. 关闭文件描述符
+    //5. 关闭文件描述符
     close(fd);
     close(fd2);
 

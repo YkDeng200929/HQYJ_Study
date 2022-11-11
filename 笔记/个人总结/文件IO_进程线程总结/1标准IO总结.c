@@ -39,7 +39,12 @@ int main(void)
 	fread(&num2, 4, 1, fp);
 	printf("num2 data: %d\n", num2.data);
 
-	//7. 关闭流指针
+	//7. 定位文件
+	// fseek(stream, offset, whence)
+	// ftell(stream) 直接定位到尾部
+	// rewind(stream) 直接定位到头部(rewind又称倒带)
+
+	//8. 关闭流指针
 	fclose(fp);
 
 	return 0;
