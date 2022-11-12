@@ -94,11 +94,40 @@
 ### 3.2 打开关闭文件函数
 1. `int open(pathname, flags)`
 2. `int open(pathname, flags, mode)`
-	1. pathname: 可以是文件名也可以是路径名
-	2. flags: O_CREAT: 没有就创建, O_TRUNC: 截断
-	3. mode: 权限(实际权限为 mode & ~umask) 0666
+	1. @pathname: 可以是文件名也可以是路径名
+	2. @flags: O_CREAT: 没有就创建, O_TRUNC: 截断
+	3. @mode: 权限(实际权限为 mode & ~umask) 0666
 3.  `close`
 ### 3.3 读写文件操作
-1. `read`
-2. `write`
+1. `ssize_t read(int fd, void *buf, size_t count)`
+2. `ssize_t write(int fd, const void *buf, size_t count)`
+### 3.4 目录操作
+#### 3.4.1 打开关闭目录
+1. `DIR * opendir(const char *name)`
+2. `int closedir(DIR *dirp)`
+#### 3.4.2 读目录
+- `struct dirent * readdir(DIR *dirp)`
+	1. 返回值: 返回目录中一个文件的 struct dirent 结构的首地址, 读到结尾返回NULL
+	2. struct dirent
+
+			struct dirent
+			{
+				into_t d_ino;		// 目录文件的 inode 号, ls -i 查询
+				off_t d_off;		// 在目录文件中的偏移
+				unsigned short d_reclen;// 目录文件名长
+				unsigned char d_type;// 文件类型
+				char d_name[256];// 目录文件的名字, 最长 255 字符
+			}
+
+	3. d_type 取值类型
+
+				DT_BLK	this is a block device
+				DT_CHR	this is a character device
+				DT_DIR	this is a directory
+				DT_FIFO	this is a named pipe
+				DT_LNK	this is a symbolic link
+				DT_REG	this is a regular file
+				DT_SOCK	this is a UNIX domain socket
+
 ### 3.4 定位文件
+- `long lseek(int fd, off_t offset, int whence)` [参考标准IO](#234-文件定位)
