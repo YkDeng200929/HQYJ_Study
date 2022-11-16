@@ -44,6 +44,7 @@ int main(void)
         socklen_t clen = sizeof(con_info);
         conct_fd = accept(sockfd, (struct sockaddr *)&con_info, &clen);
         printf("I got a client request, ip: %s, port: %d\n", inet_ntoa(con_info.sin_addr), ntohs(con_info.sin_port));
+        // 三次握手结束, 下面是四次挥手关闭
         close(conct_fd);
         sleep(1);
     }

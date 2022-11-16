@@ -1,4 +1,4 @@
-# ip信息结构体
+# ip信息结构体[查找方法](#ip信息结构体查找方法)
 
                 struct sockaddr_in saddr;
                 bzero(&saddr, sizeof(saddr));
@@ -50,7 +50,9 @@
                 void bzero(void *s, size_t n);
                 void *memset(void *s, int c, size_t n);
 
-
+# 快速查找结构体所在头文件方法
+1. 切换到头文件所在目录
+2. `grep "struct 结构体名 {" -nir`
 
 
 
