@@ -1,6 +1,8 @@
 #include <memory>
 #include "Pointer.hpp"
 
+// ÖÇÄÜÖ¸Õë
+
 int main(void)
 {
     {// auto_ptr
