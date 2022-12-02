@@ -60,12 +60,38 @@ public:
     }
 }; // end class Factory
 
+class SuperSoldier  // 抽象产品类
+{
+public:
+    virtual ~SuperSoldier(){;}
+    virtual void BreakHome() = 0;
+};
+
+class RedSuperSoldier : public SuperSoldier
+{
+public:
+    virtual void BreakHome(void)
+    {
+        cout << "RedSuperSoldier break home" << endl;
+    }
+};
+
+class BlueSuperSoldier : public SuperSoldier
+{
+public:
+    virtual void BreakHome(void)
+    {
+        cout << "BlueSuperSoldier break home" << endl;
+    }
+};
+
 // version2: 抽象工厂
 class Factory   // 抽象工厂
 {
 public:
     virtual ~Factory(void){;}
     virtual Soldier* ProductSoldier(void) = 0;
+    virtual SuperSoldier* ProductSuperSoldier(void) = 0;
 };
 
 class RedFactory : public Factory    // 红方工厂
@@ -74,6 +100,10 @@ public:
     virtual Soldier* ProductSoldier(void)
     {
         return new RedSoldier;
+    }
+    virtual SuperSoldier* ProductSuperSoldier(void)
+    {
+        return new RedSuperSoldier;
     }
 };
 
@@ -84,6 +114,10 @@ public:
     {
         return new BlueSoldier;
     }
+    virtual SuperSoldier* ProductSuperSoldier(void)
+    {
+        return new BlueSuperSoldier;
+    }
 };
 
 int main(void)
@@ -93,8 +127,6 @@ int main(void)
 
     soldier->Move();
     soldier->Attack();
-
-    delete soldier;
 
     cout << "抽象工厂: " << endl;
     Factory* redFactory = new RedFactory;
@@ -108,10 +140,17 @@ int main(void)
     blueSoldier->Move();
     blueSoldier->Attack();
 
+    cout << "抽象产品类" << endl;
+    SuperSoldier* redSuperSoldier = redFactory->ProductSuperSoldier();
+    redSuperSoldier->BreakHome();
+
+    delete redSuperSoldier;
     delete redFactory;
     delete blueFactory;
     delete redSoldier;
     delete blueSoldier;
+    delete soldier;
+    redSuperSoldier = NULL;
 
     return 0;
 }
