@@ -61,27 +61,10 @@
 
 
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2){
-    struct ListNode *find = list1;
-    for (find; find->next != NULL; find = find->next)
-    {}
-    find->next = list2->next;
-    int i, j, num = 0;
-    struct ListNode * prev = NULL, * target = NULL, *temp = NULL;
-    for (temp = list1; temp != NULL; temp = temp->next, num++)
-    {}
-    for (i = 0; i < num; i++)
-    {
-        for (prev = head, target = prev->next, j = 0; j < num - i - 1; j++, prev = prev->next, target = prev->next)
-        {
-            if (target->data > target->next->data)
-            {
-                prev->next = target->next;
-                target->next = prev->next->next;
-                prev->next->next = target;
-            }
-        }
-    }
+    struct ListNode* temp_list1 = list1, temp_list2 = list2;
+    
 
+    return list1;
 }
 // @lc code=end
 

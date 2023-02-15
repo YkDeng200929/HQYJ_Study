@@ -61,40 +61,37 @@
 
 
 bool isValid(char * s){
-    bool judge = false;
-    int i = 0, len = sizeof(s)/sizeof(s[0]);
-    while(*(s+i))
+    char buff[10000];
+    int top = 1;
+    int i = 0;
+    while (s[i])
     {
-        if (s[i+1] - s[i] == 1 || s[i+1] - s[i] == 2)
+        if (s[i] == '(' || s[i] == '{' || s[i] == '[')
         {
-            judge = true;
+            buff[top] = s[i];
+            top += 1;
         }
-        else if (i%2 == 1)
+        else 
         {
-            i += 1;
-            continue;
+            if (s[i] - buff[top-1] == 1 || s[i] - buff[top-1] == 2)
+            {
+                top -= 1;
+            }
+            else
+            {
+                return false;
+            }
         }
-        else
-        {
-            judge = false;
-        }
-        i += 1;
+        i++;
     }
-    for (i = 0; i < len/2; i++)
+    if (top == 1)
     {
-        // if (s[len] - s[i] == 1 || s[len] - s[i] == 2)
-        if (1)
-        {
-            judge = true;
-        }
-        else
-        {
-            judge = false;
-        }
-        len--;
+        return true;
     }
-
-    return judge;
+    else
+    {
+        return false;
+    }
 }
 // @lc code=end
 
