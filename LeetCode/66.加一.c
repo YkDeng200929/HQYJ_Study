@@ -62,26 +62,34 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* plusOne(int* digits, int digitsSize, int* returnSize){
-    int* retVal = NULL;
-    int i = 0;
-    if (digits[digitsSize-1] == 9)
+    int i;
+    digits[digitsSize-1] += 1;
+    for (i = digitsSize - 1; i > 0; i--)
     {
-        *returnSize = digitsSize + 1;
-        retVal = (int* )malloc(sizeof(int)*(digitsSize+1));
-        for (i = 0; i < digitsSize; i++)
+        if (digits[i] == 10)
         {
-            retVal[i] = digits[i];
+            digits[i] = 0;
+            digits[i-1] += 1;
         }
-        
-        return retVal;
+    }
+
+    if (digits[0] != 10)
+    {
+        *returnSize = digitsSize;
+        return digits;
     }
     else
     {
-        *returnSize = digitsSize;
-        digits[digitsSize] += 1;
-        return digits;
+        *returnSize = digitsSize + 1;
+        int* retArry = (int* )malloc(sizeof(int) * (digitsSize+1));
+        for (i = digitsSize-1; i >= 0; i--)
+        {
+            retArry[i+1] = digits[i];
+        }
+        retArry[1] = 0;
+        retArry[0] = 1;
+        return retArry;
     }
-
 }
 // @lc code=end
 
