@@ -54,27 +54,17 @@
 
 
 struct ListNode* deleteDuplicates(struct ListNode* head){
-    int sig = 0;
-    
-    struct ListNode* index = NULL, *bak = NULL;
-    for (index = head; (NULL != index->next) || (NULL == index); index = index->next)
-    {//x '[1,1,2,2,2]'
-    // x access'[1,1,2,2,2,3,4,5,5]'
-        sig = index->val;
-        if (sig == index->next->val)
-        {
-            bak = index;
-            index->next = index->next->next; //x
+    if (!head) {
+        return head;
+    }
+    struct ListNode* index = head;
+
+    while (index->next) {
+        if (index->val == index->next->val) {
+            index->next = index->next->next;
         }
-        else if (sig == index->val)
-        {
-            bak->next = index->next;
-            index = bak;
-            bak = index->next;
-        }
-        else
-        {
-            bak = index;
+        else {
+            index = index->next;
         }
     }
     
