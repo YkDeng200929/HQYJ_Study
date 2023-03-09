@@ -50,8 +50,8 @@ int main(int argc, const char *argv[])
 	}
 	
 	char buf[1024] = {0};
-    // 建表
-    fd_set rfds, temp;
+    // 建表(只判断文件描述符读缓冲区是否有数据)
+    fd_set rfds, temp; // rfds表示读文件描述符
     // 清空表
     FD_ZERO(&rfds);
     FD_ZERO(&temp);
@@ -60,11 +60,14 @@ int main(int argc, const char *argv[])
     FD_SET(sockfd, &rfds);
     int maxlen = sockfd+1;
     printf("set ok\n");
-	while(1)// 一直在循环(不阻塞), 不断将新连接客户端的信息更新到临时表中
+	while(1)
 	{
         //1. int cfd;
-        temp = rfds; // 创建临时表, 避免数据丢失
+        temp = rfds; // 创建临时表, 避免数据丢失(因为内核在判断
+                     // 完哪些文件描述符准备好后会修改文件描述符
+                     // 表然后将表写回源内存地址)
         //ret = select(maxlen, &rfds, NULL, NULL, NULL);
+        // 判断哪些文件描述符读缓冲区有写入, 然后记录到temp里面后返回
         ret = select(maxlen, &temp, NULL, NULL, NULL);
         printf("select ok\n");
         if (ret == -1)
@@ -72,11 +75,15 @@ int main(int argc, const char *argv[])
             perror("select");
             return -1;
         }
+        // 遍历表, 判断该请求(套接字)对应的读缓冲区是否有数据
+        // 若有数据则建立连接
         for (int i = 0; i < maxlen; ++i)
         {
+            // temp表中的数据表示这些文件描述符有写入数据, 你可以
+            // 接收连接后读数据了
             if (FD_ISSET(i, &temp))
             {
-                printf("FD_ISSE ok sockfd: %d\n", sockfd);
+                printf("FD_ISSET ok sockfd: %d\n", sockfd);
                 if (i == sockfd)
                 {
                     int cfd;/*1*/
@@ -91,45 +98,45 @@ int main(int argc, const char *argv[])
                     //3. FD_SET(cfd, &temp);
                     FD_SET(cfd, &rfds);/*3 一旦有客户端连接, 就将连接套接字写入源表(rfds)中*/
                     printf("set cfd ok\n");
-                    if (cfd + 1 > maxlen)
-                    {
-                        maxlen = cfd + 1;
-                    }
-                }
-                else if (i > 2)
+                if (cfd + 1 > maxlen)
                 {
-                    //while (1)
-                    //{
-                        memset(buf, 0, sizeof(buf));
-                        //4. recv(cfd, buf, sizeof(buf), 0);
-                        //5. send(cfd, buf, strlen(msg), 0 );
-                        ret = recv(i, buf, sizeof(buf), 0); /*4*/
-                        send(i, buf, strlen(buf), 0 ); /*5*/
-                        printf("recv && send ok\n");
-                        if (ret <= 0)/*6: 此时说明客户端已推出*/
+                    maxlen = cfd + 1;
+                }
+            }
+            else if (i > 2)
+            {
+                //while (1)
+                //{
+                    memset(buf, 0, sizeof(buf));
+                    //4. recv(cfd, buf, sizeof(buf), 0);
+                    //5. send(cfd, buf, strlen(msg), 0 );
+                    ret = recv(i, buf, sizeof(buf), 0); /*4*/
+                    send(i, buf, strlen(buf), 0 ); /*5*/
+                    printf("recv && send ok\n");
+                    if (ret <= 0)/*6: 此时说明客户端已退出*/
+                    {
+                        printf("client quit\n");
+                        FD_CLR(i, &rfds);
+                        if (i + 1 == maxlen)
                         {
-                            printf("client quit\n");
-                            FD_CLR(i, &rfds);
-                            if (i + 1 == maxlen)
-                            {
-                                --maxlen;
-                            }
-                            close(i);
-                            continue;
+                            --maxlen;
                         }
-                        /*
-                        if (strncmp(buf, "quit", 4) != 0)
-                        {
-                            continue;
-                        }
-                        else
-                            break;
-                        */
-                    //}
-                    //close(cfd);
-                    //FD_CLR(cfd, &temp);
-                    //--maxlen;
-                    //break;
+                        close(i);
+                        continue;
+                    }
+                    /*
+                    if (strncmp(buf, "quit", 4) != 0)
+                    {
+                        continue;
+                    }
+                    else
+                        break;
+                    */
+                //}
+                //close(cfd);
+                //FD_CLR(cfd, &temp);
+                //--maxlen;
+                //break;
                 }
             }
         }
