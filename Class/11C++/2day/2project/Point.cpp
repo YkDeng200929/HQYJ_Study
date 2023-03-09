@@ -1,5 +1,6 @@
 #include "Point.hpp"
 
+// 头文件是对相应类的成员函数实现
 Point::Point(int _x, int _y) : x(_x), y(_y)
 {
     setX(_x);

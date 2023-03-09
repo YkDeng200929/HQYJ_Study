@@ -3,14 +3,14 @@
 
 using namespace std;
 
-class Ouadrangle
+class Ouadrangle // 四边形
 {
 public:
     virtual void cal_s() = 0;
     virtual void cal_c() = 0;
 };
 
-class Rhombus : public Ouadrangle
+class Rhombus : public Ouadrangle // 菱形
 {
 public:
     Rhombus(int x) : x(x){;}

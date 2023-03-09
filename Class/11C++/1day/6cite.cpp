@@ -11,6 +11,11 @@ int main(void)
     cout << *p << endl;
 
     int &q = a; // 创建一个引用, 必须初始化
+    // 且创建引用后不能解除绑定的引用
+    // eg.
+    // int b = 33;
+    // &q = b; error
+    //------------------
 
     cout << " q " << q << endl;
 
