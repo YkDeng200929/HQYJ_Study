@@ -1,5 +1,6 @@
 #include "Circle.hpp"
 
+// Circle类中有个Point对象叫o, 通过初始化列表的方式初始化o对象
 Circle::Circle(int _x, int _y, int _r) : o(_x, _y)// 初始化列表
 {
     cout << "创建一个圆" << endl;
