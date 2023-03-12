@@ -12,6 +12,12 @@
 #include <sys/time.h>
 #include <sys/types.h>
 
+/* select
+select()和pselect()允许程序监视多个文件描述符，
+直到一个或多个文件描述符为某些类型的I/0操作(例如，可能的输入)“准备就绪”。
+如果一个文件描述符能够执行相应的I/0操作(例如，读(2)而不阻塞，或者写(2)足够小)，
+那么它就被认为是就绪的。
+ */
 int main(int argc, const char *argv[])
 {
 	int ret = 0;
@@ -58,11 +64,11 @@ int main(int argc, const char *argv[])
 
     // 把监听描述符放进表 FD_SET
     FD_SET(sockfd, &rfds);
-    int maxlen = sockfd+1;
+    int maxlen = sockfd+1;  // 这个表的大小是随请求用户个数增大而增加的
     printf("set ok\n");
 	while(1)
 	{
-        int ret, cfd;
+        int ret, cfd;   // cfd 表示 client file description
         temp = rfds;
         ret = select(maxlen, &rfds, NULL, NULL, NULL);
         printf("select ok\n");

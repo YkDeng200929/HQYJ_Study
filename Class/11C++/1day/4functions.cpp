@@ -2,6 +2,7 @@
 
 using namespace std;
 
+/*C++允许函数带默认参数*/
 /*常规*/
 void addNum(int a, int b)
 {
