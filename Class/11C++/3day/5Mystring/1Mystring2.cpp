@@ -31,19 +31,19 @@ class myString
 
 myString::myString(const char *value)
 {
-    if (value == NULL)
+    if (value == NULL)        // 判断是否为空字符串
     {
         data = new char[1];
-        data[0] = '\0';
+        data[0] = '\0';       // 让其始终存在一个的长度, 避免析构函数delete空内容
         len = 0;
         return ;
     }
-    len = strlen(value);
+    len = strlen(value);      // 获取初始化对象长度值
     data = new char[len + 1]; // +1是为了补'\0'
-    strcpy(data, value);
+    strcpy(data, value);      // 让对象的data属性值为value(初始化值)
 }
 
-myString::myString(const myString& other) : len(other.len)
+myString::myString(const myString& other) : len(other.len)   // 拷贝构造函数
 {
     data = new char[len + 1]; // +1是为了补'\0'
     strcpy(data, other.data); // 复制一个空间, 深拷贝
